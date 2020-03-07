@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 import { mount, shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { act, create } from 'react-test-renderer';
 import Guest from './components/Guest';
 
 it('renders without crashing', () => {
@@ -32,21 +32,27 @@ it('shows input text', () => {
 
 
 it('takes snapshot of state changes', () => {
-	const component = renderer.create(
-		<App />
-	);	
-	let tree = component.toJSON();
-	expect(tree).toMatchSnapshot();
+
+	let component;
+
+	act(() => {
+		component = create(<App />);
+	});	
+
+	expect(component.toJSON()).toMatchSnapshot();
 
 	//input and clicked
 	let instance = component.root;
 
 	let findInput = instance.findByType('input');
-	findInput.props.onChange({ target: { value: 'bar' } });
-
-	let findButton = instance.findByType('button');
-	findButton.props.onClick();
+	act(() => {
+		findInput.props.onChange({ target: { value: 'bar' } });
+	});
 	
-	tree = component.toJSON();
-	expect(tree).toMatchSnapshot();
+	let findButton = instance.findByType('button');
+	act(() => {
+		findButton.props.onClick();
+	});
+	
+	expect(component.toJSON()).toMatchSnapshot();
 });

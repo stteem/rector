@@ -15,6 +15,7 @@ export default function Guest (props) {
 		<div>
 		{ guest !== '' ? <p>My new guest is {guest}</p> : null }
 		<input
+		  type="text"
           placeholder="Enter guest name"
           onChange={(e) => setName(e.target.value)}
         />
