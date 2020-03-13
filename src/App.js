@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
-import Guest from './components/Guest';
+import { HashRouter } from 'react-router-dom';
+import Main from './components/Main';
 
 
 
@@ -11,14 +12,11 @@ class App extends Component {
 
   render() {
         return (
-            <div className="container-fluid">
-                <center>
-                    <h2>Guests</h2>
-                </center>
-                <div className="container">
-                    <Guest />
-                </div>
+          <HashRouter>
+            <div className="">
+                <Main />
             </div>
+          </HashRouter>
         );
     }
 

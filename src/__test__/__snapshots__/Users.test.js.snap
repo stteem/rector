@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User component takes snapshot of state changes 1`] = `
+Array [
+  <center>
+    <h2>
+      Guests And Users
+    </h2>
+  </center>,
+  <ul />,
+]
+`;

@@ -1,18 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`takes snapshot of state changes 1`] = `
-<div
-  className="container-fluid"
->
+Array [
   <center>
     <h2>
-      Guests
+      Guests And Users
     </h2>
-  </center>
+  </center>,
   <div
     className="container"
   >
-    <div>
+    <div
+      className="text"
+    />
+    <form>
       <input
         onChange={[Function]}
         placeholder="Enter guest name"
@@ -24,28 +25,30 @@ exports[`takes snapshot of state changes 1`] = `
       >
         Send Guest
       </button>
-    </div>
-  </div>
-</div>
+    </form>
+  </div>,
+]
 `;
 
 exports[`takes snapshot of state changes 2`] = `
-<div
-  className="container-fluid"
->
+Array [
   <center>
     <h2>
-      Guests
+      Guests And Users
     </h2>
-  </center>
+  </center>,
   <div
     className="container"
   >
-    <div>
+    <div
+      className="text"
+    >
       <p>
         My new guest is 
         bar
       </p>
+    </div>
+    <form>
       <input
         onChange={[Function]}
         placeholder="Enter guest name"
@@ -57,7 +60,7 @@ exports[`takes snapshot of state changes 2`] = `
       >
         Send Guest
       </button>
-    </div>
-  </div>
-</div>
+    </form>
+  </div>,
+]
 `;

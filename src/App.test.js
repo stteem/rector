@@ -3,26 +3,29 @@ import { render } from '@testing-library/react';
 import App from './App';
 import { mount, shallow } from 'enzyme';
 import { act, create } from 'react-test-renderer';
+//import { expect } from 'chai';
 import Guest from './components/Guest';
 
 it('renders without crashing', () => {
-  shallow(<App />);
+  const wrapper = mount(<App />);
+  const findText = wrapper.find('h2');
+  expect(findText.text()).toBe('Guests And Users');
 });
 
 
 test('renders Guests', () => {
   const { getByText } = render(<App />);
-  const guest = getByText(/Guests/i);
+  const guest = getByText(/Guests And Users/i);
   expect(guest).toBeInTheDocument();
 });
 
 it('finds submit button', () => {
-  	let wrapper = mount(<App />);
+  	let wrapper = mount(<Guest />);
   	expect(wrapper.find('button').text()).toEqual('Send Guest');
 });
 
 it('shows input text', () => {
-  	let wrapper = mount(<App />);
+  	let wrapper = mount(<Guest />);
   	wrapper.find('input').simulate('change', {
 		target: {value: 'foo'}
 	});
@@ -36,7 +39,7 @@ it('takes snapshot of state changes', () => {
 	let component;
 
 	act(() => {
-		component = create(<App />);
+		component = create(<Guest />);
 	});	
 
 	expect(component.toJSON()).toMatchSnapshot();
